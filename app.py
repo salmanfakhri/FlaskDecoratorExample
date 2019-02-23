@@ -9,8 +9,7 @@ db = []
 def login_required(f):
 	@wraps(f)
 	def verify_token(*args, **kwargs):
-		print(request.args.get('token'))
-		if request.args.get('token')  != "12345":
+		if request.args.get('token')  != "<SAMPLE_AUTH_TOKEN>":
 			return redirect(url_for('login'))
 		return f(*args, **kwargs)
 	return verify_token
