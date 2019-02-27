@@ -9,8 +9,9 @@ db = []
 def login_required(f):
 	@wraps(f)
 	def verify_token(*args, **kwargs):
-		if request.args.get('token')  != "<SAMPLE_AUTH_TOKEN>":
-			return redirect(url_for('login'))
+		
+		# Verify firebase auth token here	
+		
 		return f(*args, **kwargs)
 	return verify_token
 
