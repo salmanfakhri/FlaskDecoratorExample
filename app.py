@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 db = []
 
-# This function is a decorator.
+# This function is a decorator
 def login_required(f):
 	@wraps(f)
 	def verify_token(*args, **kwargs):
