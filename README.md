@@ -40,8 +40,8 @@ git remote -v
 ```
 You  should see something like this
 ```
-heroku https://git.heroku.com/accelerator-backend-test.git (fetch)
-heroku https://git.heroku.com/accelerator-backend-test.git (push)
+heroku https://git.heroku.com/<some-project-name>.git (fetch)
+heroku https://git.heroku.com/<some-project-name>.git (push)
 origin https://github.com/Salamander1012/FlaskDecoratorExample.git (fetch)
 origin https://github.com/Salamander1012/ FlaskDecoratorExample.git (push)
 ```
