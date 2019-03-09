@@ -58,6 +58,15 @@ git add -f firebase-credentials.json
 git commit -m "blah"
 git push heroku master
 ```
+(Not sure if this needs to be done)
+Make sure to untrack the firebase-credentials file before you push to github. The way I did this is
+```
+git rm -r --cached .
+git add .
+git commit -m "blah"
+git push origin master
+```
+This untracks all the files, then you add them all back but the firebase-credentials file is ignored because its in the gitignore
 
 6. To view the logs and check for error details you can do 
 ```
