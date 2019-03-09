@@ -1,6 +1,6 @@
 # Deploying Backend to Heroku
-## Heroku
-1. The flask server is not production ready so we need to use a different server thing. We will use gunicorn. Install like this
+## 1
+The flask server is not production ready so we need to use a different server thing. We will use gunicorn. Install like this
 ```
 pip install gunicorn
 ```
@@ -8,18 +8,18 @@ Also  after you install it make sure to add the updated list of dependencies to 
 ```
 pip freeze > requirements.txt
 ```
-
-2. You also need a Procfile so that Heroku can use gunicorn to set stuff up. Create a file called “Procfile” which contains the following
+## 2
+You also need a Procfile so that Heroku can use gunicorn to set stuff up. Create a file called “Procfile” which contains the following
 ```
 web: gunicorn name-of-flask-app:app
 ```
-
-3. By default heroku deploys using python 3 but we might be using python 2. To get heroku to deploy using your version of python create a runtime.txt file which specifies the version of python you want it to use for deployment.  A sample runtime.txt file will contain the following line.
+## 3
+By default heroku deploys using python 3 but we might be using python 2. To get heroku to deploy using your version of python create a runtime.txt file which specifies the version of python you want it to use for deployment.  A sample runtime.txt file will contain the following line.
 ```
 python-2.7.15
 ```
-
-4. Install the heroku cli. Then run 
+## 4
+Install the heroku cli. Then run 
 ```
 heroku login
 ```
@@ -52,7 +52,8 @@ git push heroku master
 ```
 Heroku will try and host you server and give you a link to where it is hosted.
 
-5. When you push to heroku keep your gitignore in mind. If your firebase app credentials are in your gitignore to keep them off of GitHub, when you push to heroku your app won’t work because the version you pushed to heroku also doesn’t have the credentials. To fix this you will need to force add the credentials file when pushing to heroku 
+## 5
+When you push to heroku keep your gitignore in mind. If your firebase app credentials are in your gitignore to keep them off of GitHub, when you push to heroku your app won’t work because the version you pushed to heroku also doesn’t have the credentials. To fix this you will need to force add the credentials file when pushing to heroku 
 ```
 git add -f firebase-credentials.json
 git commit -m "blah"
@@ -68,7 +69,8 @@ git push origin master
 ```
 This untracks all the files, then you add them all back but the firebase-credentials file is ignored because its in the gitignore
 
-6. To view the logs and check for error details you can do 
+## 6
+To view the logs and check for error details you can do 
 ```
 heroku logs --tail
 ```
