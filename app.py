@@ -20,9 +20,9 @@ def auth_required(f):
 			id_token = request.args.get('token')
 			result = auth.verify_id_token(id_token)
 			print(result['name'] + " made a request")
+			return f(user_id=result['uid'], *args, **kwargs)
 		except:
 			return jsonify({"error": "Bad token"})		
-		return f(*args, **kwargs)
 	return verify_token
 
 @app.route("/")
@@ -35,16 +35,19 @@ def login():
 
 @app.route('/transactions', methods=['GET', 'POST'])
 @auth_required
-def transactions():
-    if request.method == 'POST':
-		transaction = {
+def transactions(**kwargs):
+	print("the user sending the request is " + str(kwargs['user_id'])) # user_id comes from the variable we passed in the function above
+	# MAKE SURE THE @auth_required IS UNDERNEATH THE @app.route
+	if request.method == 'POST':
+		transaction={
 			"type": request.args.get('type'),
 			"category": request.args.get('category'),
 			"amount": request.args.get('amount')
 		}
 		db.append(transaction.copy())
 		return "SUCCESS"
-    else:
-        return jsonify(db)
+	else:
+		return jsonify(db)
+
 
 
